@@ -9,8 +9,10 @@ class LibidnConan(ConanFile):
     description = "<Description of Libidn here>"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
-    default_options = "shared=False"
+    default_options = "shared=False", "opus:shared=False"
     generators = "cmake"
+
+    requires = "opus/1.0@plex/stable", "gnutls/3.4.16-8@plex/stable"
 
     def source(self):
         self.run("git clone https://github.com/memsharded/hello.git")
